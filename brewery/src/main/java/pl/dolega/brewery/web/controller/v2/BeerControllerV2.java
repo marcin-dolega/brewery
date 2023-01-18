@@ -1,7 +1,8 @@
 package pl.dolega.brewery.web.controller.v2;
 
-import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,20 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import pl.dolega.brewery.services.v2.BeerServiceV2;
 import pl.dolega.brewery.web.model.v2.BeerDtoV2;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
+@Slf4j
+@RequiredArgsConstructor
 @Validated
 @RequestMapping("/api/v2/beer")
 @RestController
 public class BeerControllerV2 {
 
     private final BeerServiceV2 beerService;
-
-    public BeerControllerV2(BeerServiceV2 beerService) {
-        this.beerService = beerService;
-    }
 
     @GetMapping({"/{beerId}"})
     public ResponseEntity<BeerDtoV2> getBeer(@NotNull @PathVariable("beerId") UUID beerId) {

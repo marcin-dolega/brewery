@@ -27,4 +27,5 @@ public class BeerDto {
 
     @Positive
     private Long upc;
+
 }
