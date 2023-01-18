@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import pl.dolega.brewery.domain.Beer;
 import pl.dolega.brewery.web.model.BeerDto;
 
-@Mapper
+@Mapper(uses = {DateMapper.class})
 public interface BeerMapper {
 
     BeerDto beerToBeerDto(Beer beer);
